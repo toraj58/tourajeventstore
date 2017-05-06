@@ -28,11 +28,11 @@ public class TransactionalWrite {
 
         try  {
             t = eventstore.startTransaction("transactStream4", ExpectedVersion.ANY).get();
-            t.write(EventData.newBuilder().type("trans1").jsonData("{ a : 1 }").build());
-            t.write(EventData.newBuilder().type("trans1").jsonData("{ b : 2 }").build());
+            t.write(EventData.newBuilder().type("trans1").jsonData("{ data1 : 'here1' }").build());
+            t.write(EventData.newBuilder().type("trans1").jsonData("{ data2 : 'here2' }").build());
             t.write(asList(
-                    EventData.newBuilder().type("trans1").jsonData("{ c : 3 }").build(),
-                    EventData.newBuilder().type("trans1").jsonData("{ d : 4 }").build())
+                    EventData.newBuilder().type("trans1").jsonData("{ data3 : 'here3' }").build(),
+                    EventData.newBuilder().type("trans1").jsonData("{ data4 : 'here4' }").build())
             );
 
             if (1==2) {
