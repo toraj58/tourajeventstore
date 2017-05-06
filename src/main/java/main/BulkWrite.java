@@ -19,9 +19,8 @@ import static java.util.Arrays.asList;
 
 public class BulkWrite {
 
-
     public static void main(String[] args) {
-        System.out.println("======================= Bulk Wrtie =============================");
+        System.out.println("======================= Bulk Write =============================");
 
         int bulkAmount = 10;
 

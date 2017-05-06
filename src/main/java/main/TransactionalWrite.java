@@ -7,6 +7,7 @@ import com.github.msemys.esjc.Transaction;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import core.EventStoreWrapper;
+import exceptions.OrderException;
 
 import static java.util.Arrays.asList;
 
@@ -36,7 +37,7 @@ public class TransactionalWrite {
             );
 
             if (1==2) {
-            throw new NullPointerException("Null by Touraj");
+            throw new OrderException("Order Exception Occured");
             }
 
             t.commit();

@@ -10,7 +10,6 @@ import config.EventStoreConfig;
 import core.EventStoreWrapper;
 import domain.Order;
 
-import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 import static java.util.Arrays.asList;
@@ -30,7 +29,7 @@ public class Main {
         order.setId(1000);
         order.setAmount(1200);
         order.setOrderName("digi mobile777");
-        order.setOrderType("yalda666");
+        order.setOrderType("yalda2017");
 
         Gson gson = new GsonBuilder().create();
 
@@ -53,21 +52,13 @@ public class Main {
 
         try {
             eventstore.appendToStream("tourajStream", ExpectedVersion.ANY, asList(
-                    EventData.newBuilder()
-                            .type("byteType")
-                            .data(new byte[]{1, 2, 3, 4, 5})
-                            .metadata(new byte[]{6, 7, 8, 9, 0})
-                            .build(),
-                    EventData.newBuilder()
-                            .eventId(UUID.randomUUID())
-                            .type("stringType")
-                            .data("touraj was here")
-                            .build(),
+
                     EventData.newBuilder()
                             .type("jsonType")
                             .jsonData(gson.toJson(order))
                             .build())
             ).thenAccept(r -> {System.out.println(r.logPosition); System.out.println("Data recived");}).get();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -93,7 +84,5 @@ public class Main {
                         i.originalEvent().eventId,
                         i.originalEvent().eventType,
                         new String(i.originalEvent().data))));
-
     }
-
 }

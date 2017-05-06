@@ -14,7 +14,7 @@ public class EventStoreWrapper {
 
         EventStore eventstore = EventStoreBuilder.newBuilder()
                 .singleNodeAddress(EventStoreConfig.getIp(), EventStoreConfig.getPort())
-                .userCredentials("admin", "changeit")
+                .userCredentials(EventStoreConfig.getUser(), EventStoreConfig.getPassword())
                 .build();
 
         return eventstore;
